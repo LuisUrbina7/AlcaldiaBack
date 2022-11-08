@@ -23,7 +23,11 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header d-flex justify-content-between">{{ __('Perfil') }} <a href="{{route('usuarios')}}" class="btn btn-primary">Usuarios</a></div>
+                <div class="card-header d-flex justify-content-between">{{ __('Perfil') }} 
+                <div class="btn-group">
+                <a href="{{route('usuarios')}}" class="btn btn-primary">Usuarios</a><a href="{{route('usuarios.crear.formulario')}}" class="btn btn-warning">Registrar</a>
+                </div>    
+               </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('perfil.actualizar', Auth::user()->id) }}">

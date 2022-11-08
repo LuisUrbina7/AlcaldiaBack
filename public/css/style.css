@@ -51,7 +51,7 @@ a {
 
 .blog-nuevo {
   border: 3px dashed rgba(170, 170, 170, 0.808);
-  width: 231px;
+  width: 100%;
   height: 200px;
 }
 

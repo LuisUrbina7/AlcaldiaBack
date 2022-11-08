@@ -10,7 +10,7 @@
 @section('contenido')
 <section>
 
-    <div class="container">
+    <div class="container py-5">
         <div class="categorias-todos bg-light border">
             <div class="row p-md-4 justify-content-center">
                 @if (session('msg'))
@@ -35,8 +35,8 @@
                             <tr>
                                 <th scope="row">{{$categoria->id}}</th>
                                 <td>{{$categoria->nombre}}</td>
-                                <td><button value="{{route('categoria.actualizar.formulario',$categoria->id)}}" class="btn btn-primary bottom"></button></td>
-                                <td><a href="{{route('categoria.borrar',$categoria->id)}}" class="btn btn btn-danger"></a></td>
+                                <td><button value="{{route('categoria.actualizar.formulario',$categoria->id)}}" class="btn btn-primary bottom"><i class="lar la-eye"></i></button></td>
+                                <td><a href="{{route('categoria.borrar',$categoria->id)}}" class="btn btn btn-danger" onclick="borrar(this)"><i class="las la-trash-alt"></i></a></td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -51,7 +51,7 @@
                     <div class="row border mb-3">
                         <div class="col-md-12 mb-3">
                             <label for="referencia-nombre" class="form-label">Actualizar</label>
-                            <input type="text" id="id" name="id">
+                            <input type="hidden" id="id" name="id">
                             <input type="text" name="referencia-nombre" class="form-control" id="nombre">
                         </div>
                         <div class="col-md-12 mb-3 text-end">
@@ -152,6 +152,43 @@
             }
         });
     });
+    function borrar($url){
+        event.preventDefault();
+        Swal.fire({
+                title: '¿Segur@?',
+                text: "Se borrará todo!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, borrar!',
+                cancelButtonText:'Cancelar',
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    $.ajax({
+                        type: 'GET',
+                        url: $url,
+                        success: function(response) {
+                            if (response.msg == 'Bien') {
+                                Swal.fire(
+                                    'Excelente',
+                                    'Borrado Correctamente',
+                                    'success'
+                                )
+                                location.reload();
+                            } else {
+                                Swal.fire(
+                                    'Algo ocurrió',
+                                    'Inténtalo más tarde..',
+                                    'danger'
+                                )
+                            }
+                        }
+                    });
+                }
+            })
+    }
 </script>
 
 @endsection

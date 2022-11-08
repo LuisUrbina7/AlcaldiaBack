@@ -19,33 +19,38 @@ class UsuariosController extends Controller
         $Usuarios =  User::all();
         return view('auth.usuarios', compact('Usuarios'));
     }
+    public function crear_formulario(){
+        return view('auth.register');
+    }
     public function crear(Request $request)
     {
         $input = $request->all();
+       /*  dd($input); */
 
 
         if ($request->input('password') == $request->input('password_confirmation')) {
             $validator  = Validator::make($input, [
                 'name' => ['required', 'string', 'max:255'],
-                'username' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                'rol' => ['required', 'string', 'max:20'],
-                'password' => ['required', 'string', 'min:8', 'confirmed'],
+                'username' => ['required', 'string', 'max:255','unique:users'],
+                'email' => ['required', 'string', 'email', 'max:255','unique:users'],
+                /* 'rol' => ['required', 'string', 'max:20'], */
+                'password' => ['required', 'string', 'min:8'],
             ]);
 
             if ($validator->fails()) {
-                return redirect()->back()->with($validator->errors());
+                return redirect()->back()->withErrors($validator->errors());
             }
             User::create([
                 'name' => $input['name'],
                 'username' => $input['username'],
                 'email' => $input['email'],
-                'rol' => $input['rol'],
+                /* 'rol' => $input['rol'], */
                 'password' => Hash::make($input['password']),
             ]);
             return redirect()->back()->with('name', 'excelente');
         } else {
-            return redirect()->back()->with('pares', 'Las claves no son iguales');
+            var_dump('hlaa');
+            return redirect()->back()->withErrors(['password'=>'Las claves no son iguales']);
         }
     }
     public function actualizarPerfil(Request $request)

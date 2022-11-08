@@ -56,7 +56,7 @@
                         </div>
                         <div class="row m-12">
                             <div class="col-md-12 text-center">
-                                <img src="	http://localhost/BlogOrgnal0.1/public/{{$busqueda->img}}" alt="Foto" width="231px" height="200px">
+                                <img src="http://localhost/AlcaldiaBack/public/{{$busqueda->img}}" alt="Foto" width="231px" height="200px">
                             </div>
                         </div>
                         <div class="row m-3">

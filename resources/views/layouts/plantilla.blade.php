@@ -14,7 +14,7 @@
 </head>
 <body>
   <div class="d-flex">
-    <div id="sidebar" class=" bg-dark  w-25">
+    <div id="sidebar" class="bg-dark  w-25 d-md-block d-none">
       <div class="p-md-4 text-center">
         <a href="#" class="navbar-brand  text-light border-bottom">
           Blog
@@ -23,14 +23,14 @@
       <div class="opciones-menu">
         <ul class="px-4">
           <h4 class="h6  p-2 text-center text-muted fw-bold">Usuario</h4>
-          <li> <a href="{{route('perfil')}}" class="text-decoration-none ">Perfil</a> </li>
+          <li> <a href="{{route('perfil')}}" class="text-decoration-none "><i class="las la-user"></i>  Perfil</a> </li>
           <h4 class="h6  p-2 text-center text-muted fw-bold">Publicaciones</h4>
-          <li> <a href="{{route('publicaciones')}}" class="text-decoration-none ">Publicaciones</a> </li>
-          <li> <a href="{{route('publicaciones.formulario')}}" class="text-decoration-none ">Nueva Publicacion</a> </li>
+          <li> <a href="{{route('publicaciones')}}" class="text-decoration-none "><i class="lab la-buffer"></i> Publicaciones</a> </li>
+          <li> <a href="{{route('publicaciones.formulario')}}" class="text-decoration-none "><i class="las la-plus"></i> Nueva Publicacion</a> </li>
           <h4 class="h6  p-2 text-center text-muted fw-bold">Categorias</h4>
-          <li> <a href="{{route('categorias')}}" class="text-decoration-none ">Categorias</a> </li>
+          <li> <a href="{{route('categorias')}}" class="text-decoration-none "><i class="las la-sticky-note"></i> Categorias</a> </li>
           <h4 class="h6  p-2 text-center text-muted fw-bold">Publicidad</h4>
-          <li> <a href="{{route('categorias')}}" class="text-decoration-none ">Banners</a> </li>
+          <li> <a href="{{route('categorias')}}" class="text-decoration-none "><i class="las la-play"></i> Banners</a> </li>
         
 
         </ul>
@@ -41,7 +41,7 @@
         <div class="container">
           <ul class="nav justify-content-end ">
             <li class="nav-item dropdown">
-              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+              <a id="navbarDropdown" class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                 {{ Auth::user()->name }}
               </a>
               <ul class="dropdown-menu " aria-labelledby="navbarDropdown">

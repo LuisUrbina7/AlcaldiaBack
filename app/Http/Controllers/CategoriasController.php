@@ -51,10 +51,10 @@ class CategoriasController extends Controller
         try{
             $categoriaId = Categoria::find($id);
             $categoriaId->delete();
-            return redirect()->back()->with('borrado', 'Bien');
+            return response()->json(['msg'=>'excelente']);
         }
         catch(Exception $e){  
-             return redirect()->back()->with('borrado', 'Mal');
+            return response()->json(['msg'=>'Paso algo en la actualizacion']);
         }
     }
 }

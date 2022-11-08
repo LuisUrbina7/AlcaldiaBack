@@ -44,8 +44,8 @@
                             <td>{{$usuario->name}}</td>
                             <td>{{$usuario->username}}</td>
                             <td>{{$usuario->email}}</td>
-                            <td><a href="{{route('usuarios.actualizar.formulario',$usuario->id)}}" class="btn btn-success">Editar</a></td>
-                            <td><a href="{{route('usuarios.borrar',$usuario->id)}}" onclick="borrar(this)" class="btn btn-danger">Borrar</a></td>
+                            <td><a href="{{route('usuarios.actualizar.formulario',$usuario->id)}}" class="btn btn-success"><i class="las la-eye"></i></a></td>
+                            <td><a href="{{route('usuarios.borrar',$usuario->id)}}" onclick="borrar(this)" class="btn btn-danger"><i class="las la-trash-alt"></i></a></td>
                         </tr>
                        
                         @endforeach

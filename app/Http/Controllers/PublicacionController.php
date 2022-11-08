@@ -67,7 +67,7 @@ class PublicacionController extends Controller
     }
     public function actualizar(Request $request, $id)
     {
-       /*  dd($request->all()); */
+        /* dd($request->all()); */
         try {
             $actualizar = Publicacion::find($id);
             $actualizar->titulo = $request->input('titulo');
@@ -81,7 +81,7 @@ class PublicacionController extends Controller
                 $actualizar->img = $destino . $fotoNombre;
             }
             $actualizar->categoria = $request->input('categoria');
-            $actualizar->uxpdate();
+            $actualizar->update();
             return redirect()->back()->with('success', 'Publicado correctamente');
         } catch (Exception $e) {
             return redirect()->back()->with('danger','mal');
