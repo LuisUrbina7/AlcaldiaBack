@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\PublicacionController;
+use App\Http\Controllers\PublicidadController;
 use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -47,6 +48,12 @@ Route::get('/usuarios/vista/{id}', [UsuariosController::class, 'usuarios_vista']
 Route::post('/usuarios/actualizar/{id}', [UsuariosController::class, 'actualizar_usuario'])->name('usuarios.actualizar');
 Route::get('/usuarios/borrar/{id}', [UsuariosController::class, 'borrar_usuario'])->name('usuarios.borrar');
 
+Route::get('/publicidad',[PublicidadController::class,'index'])->name('publicidad');
+Route::get('/publicidad/formulario',[PublicidadController::class,'insertar_vista'])->name('publicidad.formulario');
+Route::post('/publicidad/crear',[PublicidadController::class,'insertar'])->name('publicidad.insertar');
+Route::get('/publicidad/actualizar/vista/{id}',[PublicidadController::class,'actualizar_vista'])->name('publicidad.actualizar.formulario');
+Route::post('/publicidad/actualizar/insertar/{id}',[PublicidadController::class,'actualizar'])->name('publicidad.actualizar.insertar');
+Route::get('/publicidad/borrar/{id}',[PublicidadController::class,'borrar'])->name('publicidad.borrar');
 /* Route::get('/categoria/formulario/{id}', [CategoriasController::class, 'actualizarFormulario'])->name('categoria.actualizar.formulario');
 Route::post('/categoria/modificacion/{id}', [CategoriasController::class, 'actualizar'])->name('categoria.actualizar.insertar');
 Route::get('/categoria/borrar/{id}', [CategoriasController::class, 'borrar'])->name('categoria.borrar');

@@ -37,6 +37,23 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="row mb-3">
+                            <label for="rol" class="col-md-4 col-form-label text-md-end">{{ __('Permisos') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="rol" class="form-select" name="rol">
+                                    <option selected>---seleccione---.</option>
+                                    <option value="adm">Administrador</option>
+                                    <option value="edit">Editor</option>
+                                </select>
+
+                                @error('rol')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
 
                         <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email') }}</label>

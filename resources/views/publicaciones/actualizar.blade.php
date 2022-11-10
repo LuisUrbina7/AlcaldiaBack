@@ -22,7 +22,7 @@
                     @if ( session('danger') )
                     <div class="alert alert-danger" role="alert">
                         <strong>Error</strong>
-                      Algo esta mal..
+                        Algo esta mal..
                     </div>
                     @endif
                     <h3 class="text-muted text-center pt-4 ">BORRAR <a href="#" class="btn btn-danger" id="btn-publicacion-borrar">-</a> </h3>
@@ -41,7 +41,7 @@
                         <div class="row m-3">
                             <div class="col-md-6">
                                 <label for="categoria" class="form-label">Categoria:</label>
-                                <select id="categoria" class="form-select" name="categoria"  aria-selected="{{$busqueda->categoria}}">
+                                <select id="categoria" class="form-select" name="categoria" aria-selected="{{$busqueda->categoria}}">
                                     <option value="{{$busqueda->categoria}}">---seleccione---.</option>
                                     @foreach ($categorias as $categoria)
                                     <option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
@@ -105,7 +105,7 @@
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Sí, borrar!',
-                cancelButtonText:'Cancelar',
+                cancelButtonText: 'Cancelar',
             }).then((result) => {
                 if (result.isConfirmed) {
 
@@ -114,7 +114,8 @@
                         url: borrar_id,
                         dataType: 'json',
                         success: function(response) {
-                            if (response.msg == 'Bien') {
+                            console.log(response);
+                            if (response.msg == 'bien') {
                                 Swal.fire(
                                     'Excelente',
                                     'Actualizado Correctamente',

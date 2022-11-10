@@ -17,18 +17,18 @@ a {
   list-style: none;
 }
 
-.opciones-menu li {
+.opciones-item {
   padding: 8px 2px;
 }
 
-.opciones-menu li a{
+.opciones-item a{
   display: block;
   width: 100%;
   color: white;
   padding: 3px 12px;
 }
 
-.opciones-menu li a:hover {
+.opciones-item a:hover {
   background-color: white;
   color: black;
   cursor: pointer;

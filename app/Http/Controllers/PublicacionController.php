@@ -74,6 +74,8 @@ class PublicacionController extends Controller
             $actualizar->sinopsis = $request->input('sinopsis');
             $actualizar->detalles = $request->input('detalles');
             if ($request->hasFile('foto')) {
+                $base = public_path($actualizar->img);
+                unlink($base);
                 $foto = $request->file('foto');
                 $destino = 'img/';
                 $fotoNombre = time() . '-' . $foto->getClientOriginalName();
@@ -84,17 +86,21 @@ class PublicacionController extends Controller
             $actualizar->update();
             return redirect()->back()->with('success', 'Publicado correctamente');
         } catch (Exception $e) {
-            return redirect()->back()->with('danger','mal');
+            return redirect()->back()->with('danger', 'mal');
         }
     }
     public function borrar($id)
     {
 
-        $busqueda = Publicacion::find($id);
         try {
+            $busqueda = Publicacion::find($id);
 
             $busqueda->delete();
-            return response()->json(['msg' => 'Bien']);
+            $base = public_path($busqueda->img);
+            if (file_exists($base)) {
+                unlink($base);
+            }
+            return response()->json(['msg' => 'bien']);
         } catch (Exception $e) {
             return response()->json(['msg' => 'Mal']);
         }
